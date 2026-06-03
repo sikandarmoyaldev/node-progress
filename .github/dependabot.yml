@@ -1,0 +1,29 @@
+version: 2
+
+updates:
+    # !core: npm ecosystem works with pnpm lockfiles
+    - package-ecosystem: "npm"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+          day: "monday"
+          time: "09:00"
+      open-pull-requests-limit: 10
+      labels:
+          - "dependencies"
+          - "automerge"
+      reviewers:
+          - "sikandarmoyaldev"
+      commit-message:
+          prefix: "chore(deps)"
+          include: "scope"
+      versioning-strategy: increase
+
+    # !important: keep GitHub Actions up to date
+    - package-ecosystem: "github-actions"
+      directory: "/"
+      schedule:
+          interval: "weekly"
+      labels:
+          - "ci"
+          - "automerge"

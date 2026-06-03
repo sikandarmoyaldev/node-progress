@@ -1,5 +1,5 @@
 # !important: validate Conventional Commits format
-if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+" "$1"; then
+if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore|ci)(\(.+\))?: .+" "$1"; then
   echo "❌ Invalid commit message format."
   echo ""
   echo "Expected: <type>(<scope>): <description>"
