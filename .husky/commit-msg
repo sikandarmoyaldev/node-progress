@@ -1,7 +1,4 @@
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-# !important: validate commit message follows Conventional Commits
+# !important: validate Conventional Commits format
 if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+" "$1"; then
   echo "❌ Invalid commit message format."
   echo ""
