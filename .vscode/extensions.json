@@ -1,0 +1,34 @@
+{
+    "recommendations": [
+        // --- Core Language Support ---
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+
+        // --- TypeScript/JavaScript Enhancement ---
+        "christian-kohler.path-intellisense",
+        "usernamehw.errorlens",
+        "streetsidesoftware.code-spell-checker",
+
+        // --- Git & GitHub ---
+        "github.vscode-pull-request-github",
+        "eamodio.gitlens",
+
+        // --- Testing ---
+        "vitest.explorer",
+
+        // --- Productivity ---
+        "aaron-bond.better-comments",
+        "bierner.markdown-preview-github-styles",
+        "oderwat.indent-rainbow",
+
+        // --- Package Management ---
+        "visualstudioexptteam.vscodeintellicode",
+        "pnpm.pnpm-vscode"
+    ],
+    "unwantedRecommendations": [
+        // Disable extensions that conflict with our setup
+        "ms-vscode.js-debug-nightly",
+        "ms-python.python"
+    ]
+}

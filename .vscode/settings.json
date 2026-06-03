@@ -1,0 +1,80 @@
+{
+    // --- Prettier Framework Integrations ---
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": false,
+
+    // --- ESLint Integration ---
+    "eslint.enable": true,
+    "eslint.validate": ["typescript", "typescriptreact", "javascript", "javascriptreact"],
+    "eslint.rules.customizations": [{ "rule": "*", "severity": "warn" }],
+    "eslint.workingDirectories": [{ "mode": "auto" }],
+
+    // --- Clean Explorer Side-Panel Trimming ---
+    "files.exclude": {
+        "**/node_modules": true,
+        "**/.next": true,
+        "**/dist": true,
+        "**/.turbo": true,
+        "**/.DS_Store": true,
+        "**/*.log": true,
+        "pnpm-debug.log*": true,
+        "**/.git": true,
+        "**/coverage": true,
+        "**/*.tgz": true,
+        "**/.husky": true
+    },
+
+    // --- Search Engine Performance Optimization ---
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/.next": true,
+        "**/dist": true,
+        "**/pnpm-lock.yaml": true,
+        "**/.turbo": true,
+        "**/coverage": true,
+        "**/*.log": true
+    },
+
+    // --- File Nesting View Rules ---
+    "explorer.fileNesting.enabled": true,
+    "explorer.fileNesting.expand": false,
+    "explorer.fileNesting.patterns": {
+        "*.ts": "${capture}.js, ${capture}.d.ts, ${capture}.js.map, ${capture}.d.ts.map",
+        "*.test.ts": "${capture}.test.js, ${capture}.test.d.ts",
+        "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .prettier*, prettier*, eslint*, tsconfig*, vitest.config*",
+        ".env.local": ".env.*",
+        "tsconfig.json": "tsconfig.*.json"
+    },
+
+    // --- Automated Linting & Imports Optimization ---
+    "editor.codeActionsOnSave": {
+        "source.organizeImports": "explicit",
+        "source.fixAll.eslint": "explicit"
+    },
+
+    // --- Files & Encoding ---
+    "files.encoding": "utf8",
+    "files.eol": "\n",
+    "files.insertFinalNewline": true,
+    "files.trimTrailingWhitespace": true,
+    "files.associations": {
+        "*.cjs": "javascript",
+        "*.mjs": "javascript"
+    },
+
+    // --- Git Integration ---
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "git.pruneOnFetch": true,
+    "git.ignoredRepositories": [],
+
+    // --- Problems Panel ---
+    "problems.showCurrentInStatus": true,
+
+    // --- Debug Settings ---
+    "debug.console.fontSize": 13,
+    "debug.inlineValues": "auto"
+}

@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug: Run Demo",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": ["--loader", "tsx/esm"],
+            "runtimeExecutable": "pnpm",
+            "args": ["tsx", "demo.ts"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "skipFiles": ["<node_internals>/**", "**/node_modules/**"]
+        },
+        {
+            "name": "Debug: Run Tests",
+            "type": "node",
+            "request": "launch",
+            "runtimeArgs": ["--loader", "tsx/esm", "--test"],
+            "runtimeExecutable": "pnpm",
+            "args": ["vitest", "run"],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "internalConsoleOptions": "neverOpen",
+            "skipFiles": ["<node_internals>/**", "**/node_modules/**"]
+        },
+        {
+            "name": "Attach to Process",
+            "type": "node",
+            "request": "attach",
+            "port": 9229,
+            "restart": true,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": ".",
+            "protocol": "inspector",
+            "skipFiles": ["<node_internals>/**", "**/node_modules/**"]
+        }
+    ]
+}

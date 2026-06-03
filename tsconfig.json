@@ -1,0 +1,35 @@
+{
+    "compilerOptions": {
+        "target": "ES2022",
+        "module": "ESNext",
+        "lib": ["ES2022"],
+
+        /* Type Definitions */
+        "types": ["node"],
+        "typeRoots": ["./node_modules/@types"],
+
+        /* Output */
+        "declaration": true,
+        "declarationMap": true,
+        "sourceMap": true,
+        "outDir": "./dist",
+        "rootDir": "./src",
+
+        /* Strictness */
+        "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true,
+
+        /* Module Resolution */
+        "moduleResolution": "bundler",
+        "resolveJsonModule": true,
+        "isolatedModules": true,
+
+        /* Linting */
+        "noUnusedLocals": true,
+        "noUnusedParameters": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "dist", "**/*.test.ts"]
+}

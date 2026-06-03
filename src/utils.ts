@@ -1,0 +1,65 @@
+/**
+ * Clamp number between min/max (prevents out-of-bounds values)
+ * !important: Used everywhere to keep progress within [0, total]
+ */
+export function clamp(value: number, min: number, max: number): number {
+    return Math.min(Math.max(value, min), max); // !core logic
+}
+
+/**
+ * Format ms → human-readable time ("1h 2m 3s" / "45s")
+ * !important: ETA display depends on this formatting
+ */
+export function formatTime(ms: number): string {
+    const totalSeconds = Math.floor(ms / 1000);
+    const seconds = totalSeconds % 60;
+    const minutes = Math.floor(totalSeconds / 60) % 60;
+    const hours = Math.floor(totalSeconds / 3600);
+
+    if (hours > 0) return `${hours}h ${minutes}m ${seconds}s`;
+    if (minutes > 0) return `${minutes}m ${seconds}s`;
+    return `${seconds}s`;
+}
+
+/**
+ * Calculate ETA in ms based on elapsed time + progress ratio
+ * !important: Returns null when progress is 0% or 100% (can't calculate)
+ */
+export function calculateEta(elapsed: number, progress: number): number | null {
+    if (progress <= 0 || progress >= 1) return null; // !edge case guard
+    return Math.round(elapsed / progress - elapsed); // !core formula
+}
+
+/**
+ * Merge user options with defaults → clean config object
+ * !internal: Called once in constructor, avoids repeated null checks
+ */
+export function resolveOptions(
+    options: import("./progressbar/types").ProgressOptions
+): import("./progressbar/types").ResolvedOptions {
+    return {
+        total: options.total,
+        quiet: options.quiet ?? false,
+        barWidth: options.barWidth ?? 40,
+        symbols: {
+            filled: options.symbol?.filled ?? "█",
+            empty: options.symbol?.empty ?? "░",
+        },
+        prefix: options.prefix ?? "🎬",
+        suffix: options.suffix ?? "",
+        showEta: options.showEta ?? true,
+        showPercent: options.showPercent ?? true,
+        showCounter: options.showCounter ?? true,
+        updateInterval: options.updateInterval ?? 100,
+    };
+}
+
+/**
+ * Validate total is non-negative finite number
+ * !important: Throws early to prevent silent bugs later
+ */
+export function validateTotal(total: number): void {
+    if (!Number.isFinite(total) || total < 0) {
+        throw new Error("ProgressOptions.total must be a non-negative finite number"); // !fail fast
+    }
+}
