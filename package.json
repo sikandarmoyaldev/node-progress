@@ -33,6 +33,16 @@
         "dev": "tsup src/index.ts --format esm,cjs --dts --watch",
         "build": "tsup src/index.ts --format esm,cjs --dts --clean"
     },
+    "lint-staged": {
+        "src/**/*.ts": [
+            "prettier --write",
+            "eslint --fix",
+            "vitest run --related"
+        ],
+        "*.{json,md}": [
+            "prettier --write"
+        ]
+    },
     "devDependencies": {
         "@types/node": "^20.19.41",
         "@typescript-eslint/eslint-plugin": "^7.0.0",

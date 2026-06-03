@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# !important: validate commit message follows Conventional Commits
+if ! grep -qE "^(feat|fix|docs|style|refactor|test|chore)(\(.+\))?: .+" "$1"; then
+  echo "❌ Invalid commit message format."
+  echo ""
+  echo "Expected: <type>(<scope>): <description>"
+  echo "Examples:"
+  echo "  feat: add pause() method"
+  echo "  fix: resolve ETA calculation bug"
+  echo "  docs: update README examples"
+  echo ""
+  echo "Types: feat, fix, docs, style, refactor, test, chore"
+  exit 1
+fi
