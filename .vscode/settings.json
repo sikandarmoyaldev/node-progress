@@ -41,11 +41,12 @@
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.expand": false,
     "explorer.fileNesting.patterns": {
-        "*.ts": "${capture}.js, ${capture}.d.ts, ${capture}.js.map, ${capture}.d.ts.map",
+        "tsconfig.json": "tsconfig.*.json",
+        "README.md": "*.md",
         "*.test.ts": "${capture}.test.js, ${capture}.test.d.ts",
-        "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .prettier*, prettier*, eslint*, tsconfig*, vitest.config*",
-        ".env.local": ".env.*",
-        "tsconfig.json": "tsconfig.*.json"
+        "*.ts": "${capture}.js, ${capture}.d.ts, ${capture}.js.map, ${capture}.d.ts.map",
+        "package.json": "pnpm-lock.yaml, pnpm-workspace.yaml, .prettier*, prettier*, eslint*, vitest.config*",
+        ".env.local": ".env.*"
     },
 
     // --- Automated Linting & Imports Optimization ---
