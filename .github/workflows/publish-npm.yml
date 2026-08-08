@@ -30,7 +30,7 @@ jobs:
               run: pnpm install
 
             - name: Build TypeScript package
-              run: pnpm run ts build
+              run: pnpm run build
 
             - name: Publish to npm
               run: cd packages/ts && npm publish --access public
