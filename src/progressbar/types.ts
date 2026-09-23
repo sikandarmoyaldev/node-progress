@@ -1,5 +1,5 @@
 export interface ProgressOptions {
-    total: number; // !required: target steps
+    total: number;
     quiet?: boolean;
     barWidth?: number;
     symbol?: ProgressBarSymbols;
@@ -12,17 +12,17 @@ export interface ProgressOptions {
 }
 
 export interface ProgressBarSymbols {
-    filled?: string; // default: '█'
-    empty?: string; // default: '░'
+    filled?: string;
+    empty?: string;
 }
 
 export interface StartOptions {
-    initialValue?: number; // !useful for resuming interrupted progress
+    initialValue?: number;
     message?: string;
 }
 
 export interface UpdateOptions {
-    relative?: boolean; // !true = delta (+/-), false = absolute position
+    relative?: boolean;
     message?: string;
 }
 

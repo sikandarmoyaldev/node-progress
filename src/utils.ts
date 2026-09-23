@@ -1,15 +1,7 @@
-/**
- * Clamp number between min/max (prevents out-of-bounds values)
- * !important: Used everywhere to keep progress within [0, total]
- */
 export function clamp(value: number, min: number, max: number): number {
-    return Math.min(Math.max(value, min), max); // !core logic
+    return Math.min(Math.max(value, min), max);
 }
 
-/**
- * Format ms → human-readable time ("1h 2m 3s" / "45s")
- * !important: ETA display depends on this formatting
- */
 export function formatTime(ms: number): string {
     const totalSeconds = Math.floor(ms / 1000);
     const seconds = totalSeconds % 60;
@@ -21,21 +13,13 @@ export function formatTime(ms: number): string {
     return `${seconds}s`;
 }
 
-/**
- * Calculate ETA in ms based on elapsed time + progress ratio
- * !important: Returns null when progress is 0% or 100% (can't calculate)
- */
 export function calculateEta(elapsed: number, progress: number): number | null {
-    if (progress <= 0 || progress >= 1) return null; // !edge case guard
-    return Math.round(elapsed / progress - elapsed); // !core formula
+    if (progress <= 0 || progress >= 1) return null;
+    return Math.round(elapsed / progress - elapsed);
 }
 
-/**
- * Merge user options with defaults → clean config object
- * !internal: Called once in constructor, avoids repeated null checks
- */
 export function resolveOptions(
-    options: import("./progressbar/types").ProgressOptions
+    options: import("./progressbar/types").ProgressOptions,
 ): import("./progressbar/types").ResolvedOptions {
     return {
         total: options.total,
@@ -54,12 +38,10 @@ export function resolveOptions(
     };
 }
 
-/**
- * Validate total is non-negative finite number
- * !important: Throws early to prevent silent bugs later
- */
 export function validateTotal(total: number): void {
     if (!Number.isFinite(total) || total < 0) {
-        throw new Error("ProgressOptions.total must be a non-negative finite number"); // !fail fast
+        throw new Error(
+            "ProgressOptions.total must be a non-negative finite number",
+        );
     }
 }
