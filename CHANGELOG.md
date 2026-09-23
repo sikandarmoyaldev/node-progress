@@ -2,6 +2,13 @@
 
 All notable changes to this project follow [Semantic Versioning](https://semver.org/).
 
+## [0.0.2] - 2026-09-23
+
+### Bug Fixes
+
+- Fixed `createProgressBar` factory function signature to accept `ProgressOptions` object for better type safety and flexibility.
+- Fixed double rendering issue by adding completion state checks in `draw` and `complete` methods.
+
 ## [0.0.1] - 2026-06-03
 
 ### ✨ Features
