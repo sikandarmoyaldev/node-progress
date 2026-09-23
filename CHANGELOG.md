@@ -2,6 +2,14 @@
 
 All notable changes to this project follow [Semantic Versioning](https://semver.org/).
 
+## [0.0.3] - 2026-09-23
+
+### Bug Fixes
+
+- Fixed progress bar freezing during partial renders by removing premature `completed` state locking in `update()`.
+- Fixed double-counting bug in `renderGroups` by properly utilizing `initialValue` for existing files and only calling `increment()` on newly rendered items.
+- Ensured `bar.complete()` is the exclusive method for finalizing the progress bar and drawing the final 100% state.
+
 ## [0.0.2] - 2026-09-23
 
 ### Bug Fixes

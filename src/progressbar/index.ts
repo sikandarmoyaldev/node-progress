@@ -57,14 +57,9 @@ export class ProgressBar {
     public update(value: number, options?: UpdateOptions): void {
         const { relative = false, message } = options ?? {};
 
-        const newValue = relative
-            ? this.current + value
-            : clamp(value, 0, this.config.total);
-        this.current = clamp(newValue, 0, this.config.total);
+        const newValue = relative ? this.current + value : value; // absolute progress update (e.g., bar.update(30))
 
-        if (this.current >= this.config.total && !this.completed) {
-            this.completed = true;
-        }
+        this.current = clamp(newValue, 0, this.config.total);
 
         if (message && !this.config.quiet) {
             process.stdout.write(`\n↳ ${message}\n`);
@@ -79,12 +74,11 @@ export class ProgressBar {
     }
 
     public complete(message?: string): void {
-        // !fix: prevent double rendering of the completed bar
         if (this.completed) return;
 
         this.current = this.config.total;
         this.completed = true;
-        this.draw(true); // !force: final render with newline
+        this.draw(true); // force final render
 
         if (message && !this.config.quiet) {
             process.stdout.write(`✨ ${message}\n`);
@@ -130,8 +124,6 @@ export class ProgressBar {
 
     private draw(force: boolean = false): void {
         if (this.config.quiet || this.isPaused) return;
-
-        // !fix: prevent redrawing if already completed and not explicitly forced
         if (this.completed && !force) return;
 
         const now = Date.now();
@@ -180,10 +172,6 @@ export class ProgressBar {
     }
 }
 
-/**
- * Factory: quick ProgressBar creation
- * !updated: now accepts full ProgressOptions object to support prefix, suffix, etc.
- */
 export const createProgressBar = (options: ProgressOptions): ProgressBar => {
     return new ProgressBar(options);
 };

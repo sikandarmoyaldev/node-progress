@@ -1,6 +1,6 @@
 {
     "name": "@sikandarmoyaldev/progress",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "description": "A lightweight, terminal-friendly progress bar for Node.js CLI tools",
     "type": "module",
     "main": "./dist/index.js",
